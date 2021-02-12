@@ -12,6 +12,6 @@ class MenuItem {
   final String title;
   final String route;
   final IconData icon;
-  final IconData alertIcon;
+  final Icon alertIcon;
   final List<MenuItem> children;
 }

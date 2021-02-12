@@ -126,8 +126,7 @@ class SideBarItem extends StatelessWidget {
         : SizedBox();
   }
 
-  Widget _buildTitle(String title, IconData alertIcon,
-      [bool selected = false]) {
+  Widget _buildTitle(String title, Icon alertIcon, [bool selected = false]) {
     return Row(
       children: [
         Text(
@@ -135,9 +134,7 @@ class SideBarItem extends StatelessWidget {
           style: selected ? activeTextStyle : textStyle,
         ),
         SizedBox(width: 10),
-        alertIcon != null
-            ? Icon(alertIcon, size: 22, color: Colors.red)
-            : SizedBox()
+        alertIcon != null ? alertIcon : SizedBox()
       ],
     );
   }
