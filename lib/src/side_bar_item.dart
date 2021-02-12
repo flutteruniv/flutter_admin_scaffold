@@ -57,6 +57,7 @@ class SideBarItem extends StatelessWidget {
         contentPadding: _getTilePadding(depth),
         leading: _buildIcon(item.icon, selected),
         title: _buildTitle(item.title, selected),
+        trailing: _buildTrailingIcon(item.trailingIcon, selected),
         selected: selected,
         tileColor: backgroundColor,
         selectedTileColor: activeBackgroundColor,
@@ -92,6 +93,7 @@ class SideBarItem extends StatelessWidget {
         tilePadding: _getTilePadding(depth),
         leading: _buildIcon(item.icon),
         title: _buildTitle(item.title),
+        trailing: _buildTrailingIcon(item.trailingIcon),
         initiallyExpanded: selected,
         children: childrenTiles,
       ),
@@ -111,6 +113,22 @@ class SideBarItem extends StatelessWidget {
   }
 
   Widget _buildIcon(IconData icon, [bool selected = false]) {
+    return icon != null
+        ? Icon(
+            icon,
+            size: 22,
+            color: selected
+                ? activeIconColor != null
+                    ? activeIconColor
+                    : activeTextStyle.color
+                : iconColor != null
+                    ? iconColor
+                    : textStyle.color,
+          )
+        : SizedBox();
+  }
+
+  Widget _buildTrailingIcon(IconData icon, [bool selected = false]) {
     return icon != null
         ? Icon(
             icon,
