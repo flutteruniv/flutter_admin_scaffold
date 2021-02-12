@@ -5,13 +5,13 @@ class MenuItem {
     @required this.title,
     this.route,
     this.icon,
-    this.trailingIcon,
+    this.alertIcon,
     this.children = const [],
   });
 
   final String title;
   final String route;
   final IconData icon;
-  final IconData trailingIcon;
+  final IconData alertIcon;
   final List<MenuItem> children;
 }

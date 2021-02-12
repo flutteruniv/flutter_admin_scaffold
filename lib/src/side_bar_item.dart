@@ -56,8 +56,7 @@ class SideBarItem extends StatelessWidget {
       return ListTile(
         contentPadding: _getTilePadding(depth),
         leading: _buildIcon(item.icon, selected),
-        title: _buildTitle(item.title, selected),
-        trailing: _buildTrailingIcon(item.trailingIcon, selected),
+        title: _buildTitle(item.title, item.alertIcon, selected),
         selected: selected,
         tileColor: backgroundColor,
         selectedTileColor: activeBackgroundColor,
@@ -92,8 +91,7 @@ class SideBarItem extends StatelessWidget {
       child: ExpansionTile(
         tilePadding: _getTilePadding(depth),
         leading: _buildIcon(item.icon),
-        title: _buildTitle(item.title),
-        trailing: _buildTrailingIcon(item.trailingIcon),
+        title: _buildTitle(item.title, item.alertIcon),
         initiallyExpanded: selected,
         children: childrenTiles,
       ),
@@ -128,26 +126,19 @@ class SideBarItem extends StatelessWidget {
         : SizedBox();
   }
 
-  Widget _buildTrailingIcon(IconData icon, [bool selected = false]) {
-    return icon != null
-        ? Icon(
-            icon,
-            size: 22,
-            color: selected
-                ? activeIconColor != null
-                    ? activeIconColor
-                    : activeTextStyle.color
-                : iconColor != null
-                    ? iconColor
-                    : textStyle.color,
-          )
-        : SizedBox();
-  }
-
-  Widget _buildTitle(String title, [bool selected = false]) {
-    return Text(
-      title,
-      style: selected ? activeTextStyle : textStyle,
+  Widget _buildTitle(String title, IconData alertIcon,
+      [bool selected = false]) {
+    return Row(
+      children: [
+        Text(
+          title,
+          style: selected ? activeTextStyle : textStyle,
+        ),
+        SizedBox(width: 10),
+        alertIcon != null
+            ? Icon(alertIcon, size: 22, color: Colors.red)
+            : SizedBox()
+      ],
     );
   }
 
