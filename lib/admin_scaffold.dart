@@ -205,7 +205,10 @@ class _AdminScaffoldState extends State<AdminScaffold>
 
     final leading = sideBar != null
         ? IconButton(
-            icon: const Icon(Icons.menu, size: 300),
+            icon: const Icon(
+              Icons.menu,
+              color: Color(0xFF222222),
+            ),
             onPressed: _toggleSidebar,
           )
         : appBar.leading;
